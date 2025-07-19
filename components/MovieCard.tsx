@@ -159,7 +159,7 @@ export function MovieCard({ movie, index, size = 'medium' }: MovieCardProps) {
 
           {/* Enhanced Description */}
           <p className="text-xs text-zinc-300 line-clamp-3 leading-relaxed">
-            {movie.description || `Experience ${movie.title} in stunning quality with crystal-clear visuals and immersive audio. Available with multiple subtitle options.`}
+            {`Experience ${movie.title} in stunning quality with crystal-clear visuals and immersive audio. Available with multiple subtitle options.`}
           </p>
         </div>
         )}
