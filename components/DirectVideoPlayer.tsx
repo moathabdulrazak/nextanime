@@ -98,13 +98,23 @@ export function DirectVideoPlayer({ streamingLinks, className = '' }: DirectVide
             overflow: 'hidden',
           }}
         />
+      ) : selectedSource.type === 'iframe' ? (
+        <iframe
+          src={selectedSource.url}
+          width="100%"
+          height="100%"
+          allowFullScreen
+          frameBorder="0"
+          className="rounded-lg"
+          onError={handlePlayerError}
+        />
       ) : (
-        <ReactPlayer
-          url={selectedSource.url}
-          playing={false}
+        <video
+          src={selectedSource.url}
           controls
           width="100%"
           height="100%"
+          className="rounded-lg"
           onError={handlePlayerError}
         />
       )}
