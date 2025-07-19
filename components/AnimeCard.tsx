@@ -153,7 +153,7 @@ export function AnimeCard({ anime, index = 0, size = 'medium' }: AnimeCardProps)
 
           {/* Enhanced Description */}
           <p className="text-xs text-zinc-300 line-clamp-3 leading-relaxed">
-            {anime.description || `Experience ${anime.title} with authentic Japanese voice acting and high-quality subtitles. Available in both subbed and dubbed versions with multiple language options.`}
+            {`Experience ${anime.title} with authentic Japanese voice acting and high-quality subtitles. Available in both subbed and dubbed versions with multiple language options.`}
           </p>
         </div>
       )}
