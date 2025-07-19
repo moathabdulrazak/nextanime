@@ -42,14 +42,8 @@ export function DirectVideoPlayer({ streamingLinks, className = '' }: DirectVide
     
     // Try the next available source
     if (streamingLinks.length > 1) {
-      const videoSources = streamingLinks.map(link => ({
-        url: link.url,
-        type: link.type === 'iframe' ? 'iframe' as const : link.isM3U8 ? 'hls' as const : 'mp4' as const,
-        quality: link.quality
-      }));
-      
-      const currentIndex = videoSources.findIndex(s => s.url === selectedSource?.url);
-      const nextSource = videoSources[currentIndex + 1] || videoSources[0];
+      const currentIndex = streamingLinks.findIndex(s => s.url === selectedSource?.url);
+      const nextSource = streamingLinks[currentIndex + 1] || streamingLinks[0];
       
       if (nextSource && nextSource.url !== selectedSource?.url) {
         console.log('Trying next source:', nextSource);
