@@ -99,8 +99,6 @@ export default function ContentPage() {
               <span className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-bold ${
                 content.type === 'Movie' 
                   ? 'bg-purple-600 text-white' 
-                  : content.type === 'Anime'
-                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
                   : 'bg-yellow-500 text-black'
               }`}>
                 {content.type}
