@@ -118,7 +118,11 @@ export default function WatchPage() {
 
         <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
           <DirectVideoPlayer 
-            streamingLinks={streamingLinks || []} 
+            streamingLinks={(streamingLinks || []).map(link => ({
+              url: link.url,
+              quality: link.quality,
+              type: link.isM3U8 ? 'hls' as const : (link.type === 'iframe' ? 'iframe' as const : 'mp4' as const)
+            }))} 
             className="rounded-lg"
           />
         </div>
