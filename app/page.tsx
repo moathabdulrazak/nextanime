@@ -52,7 +52,7 @@ export default function Home() {
 
   // Set featured content from trending
   useEffect(() => {
-    if (trending?.results.length > 0) {
+    if (trending?.results && trending.results.length > 0) {
       setFeaturedContent(trending.results[0]);
     }
   }, [trending]);
