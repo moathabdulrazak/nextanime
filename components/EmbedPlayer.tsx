@@ -18,7 +18,7 @@ export function EmbedPlayer({ url, className = '' }: EmbedPlayerProps) {
     // Import x-frame-bypass dynamically to avoid SSR issues
     const loadXFrameBypass = async () => {
       try {
-        await import('x-frame-bypass');
+        await import('x-frame-bypass' as any);
         console.log('x-frame-bypass loaded successfully');
       } catch (error) {
         console.log('x-frame-bypass failed to load:', error);
