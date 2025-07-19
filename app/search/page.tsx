@@ -72,11 +72,7 @@ export default function SearchPage() {
         <>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {allResults.map((item, index) => (
-              item.type === 'Anime' ? (
-                <AnimeCard key={`anime-${item.id}`} anime={item} index={index} />
-              ) : (
-                <MovieCard key={`movie-${item.id}`} movie={item} index={index} />
-              )
+              <MovieCard key={`movie-${item.id}`} movie={item} index={index} />
             ))}
           </div>
 
