@@ -102,16 +102,10 @@ export function DirectVideoPlayer({ streamingLinks, className = '' }: DirectVide
         <ReactPlayer
           url={selectedSource.url}
           playing={false}
-          controls={true}
+          controls
           width="100%"
           height="100%"
           onError={handlePlayerError}
-          onReady={() => console.log('Video player ready')}
-          config={{}}
-          style={{
-            borderRadius: '8px',
-            overflow: 'hidden',
-          }}
         />
       )}
       
