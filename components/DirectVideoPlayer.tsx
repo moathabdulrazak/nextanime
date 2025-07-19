@@ -29,18 +29,11 @@ export function DirectVideoPlayer({ streamingLinks, className = '' }: DirectVide
 
   useEffect(() => {
     if (streamingLinks && streamingLinks.length > 0) {
-      // Convert FlixHQ links to our format
-      const videoSources = streamingLinks.map(link => ({
-        url: link.url,
-        type: link.type === 'iframe' ? 'iframe' as const : link.isM3U8 ? 'hls' as const : 'mp4' as const,
-        quality: link.quality
-      }));
-      
       // Select the best source (prefer iframe for better compatibility)
-      const iframeSource = videoSources.find(s => s.type === 'iframe');
-      const hlsSource = videoSources.find(s => s.type === 'hls');
-      const mp4Source = videoSources.find(s => s.type === 'mp4');
-      setSelectedSource(iframeSource || hlsSource || mp4Source || videoSources[0]);
+      const iframeSource = streamingLinks.find(s => s.type === 'iframe');
+      const hlsSource = streamingLinks.find(s => s.type === 'hls');
+      const mp4Source = streamingLinks.find(s => s.type === 'mp4');
+      setSelectedSource(iframeSource || hlsSource || mp4Source || streamingLinks[0]);
     }
   }, [streamingLinks]);
 
