@@ -107,11 +107,7 @@ export function DirectVideoPlayer({ streamingLinks, className = '' }: DirectVide
           height="100%"
           onError={handlePlayerError}
           onReady={() => console.log('Video player ready')}
-          config={{
-            youtube: {
-              playerVars: { showinfo: 1 }
-            }
-          }}
+          config={{}}
           style={{
             borderRadius: '8px',
             overflow: 'hidden',
