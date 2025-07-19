@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "AnimeStream - Watch Anime Online",
+  title: "Metflix",
   description: "Stream your favorite anime shows and movies in high quality",
 };
 
