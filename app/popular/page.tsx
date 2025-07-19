@@ -133,11 +133,7 @@ export default function PopularPage() {
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
               {allPopularContent.map((item, index) => (
-                item.type === 'Anime' ? (
-                  <AnimeCard key={`${item.id}-${currentPage}`} anime={item} index={index} />
-                ) : (
-                  <MovieCard key={`${item.id}-${currentPage}`} movie={item} index={index} />
-                )
+                <MovieCard key={`${item.id}-${currentPage}`} movie={item} index={index} />
               ))}
             </div>
           )}
