@@ -93,20 +93,7 @@ export function DirectVideoPlayer({ streamingLinks, className = '' }: DirectVide
           frameBorder="0"
           allowFullScreen
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          style={{
-            borderRadius: '8px',
-            overflow: 'hidden',
-          }}
-        />
-      ) : selectedSource.type === 'iframe' ? (
-        <iframe
-          src={selectedSource.url}
-          width="100%"
-          height="100%"
-          allowFullScreen
-          frameBorder="0"
           className="rounded-lg"
-          onError={handlePlayerError}
         />
       ) : (
         <video
