@@ -7,9 +7,9 @@ import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation';
 import { Search } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 
-export default function SearchPage() {
+function SearchContent() {
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || '';
   const [page, setPage] = useState(1);
@@ -89,5 +89,20 @@ export default function SearchPage() {
         </>
       )}
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="container mx-auto px-4 py-20">
+        <div className="text-center">
+          <Search className="w-16 h-16 mx-auto mb-4 text-gray-600" />
+          <h2 className="text-2xl font-bold mb-2">Loading...</h2>
+        </div>
+      </div>
+    }>
+      <SearchContent />
+    </Suspense>
   );
 }
