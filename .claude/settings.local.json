@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:yyy-mocha-five.vercel.app)"
+    ],
+    "deny": []
+  }
+}
