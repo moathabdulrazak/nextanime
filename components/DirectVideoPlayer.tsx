@@ -119,12 +119,7 @@ export function DirectVideoPlayer({ streamingLinks, className = '' }: DirectVide
           <select
             value={selectedSource.url}
             onChange={(e) => {
-              const videoSources = streamingLinks.map(link => ({
-                url: link.url,
-                type: link.type === 'iframe' ? 'iframe' as const : link.isM3U8 ? 'hls' as const : 'mp4' as const,
-                quality: link.quality
-              }));
-              const source = videoSources.find(s => s.url === e.target.value);
+              const source = streamingLinks.find(s => s.url === e.target.value);
               if (source) setSelectedSource(source);
             }}
             className="bg-transparent text-white text-xs border-none outline-none"
