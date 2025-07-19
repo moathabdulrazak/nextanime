@@ -367,7 +367,7 @@ class MovieAPI {
         image: anime.coverImage.large || '',
         description: anime.description ? anime.description.replace(/<[^>]*>/g, '') : '',
         releaseDate: anime.startDate ? `${anime.startDate.year}-${anime.startDate.month}-${anime.startDate.day}` : '',
-        type: 'Anime',
+        type: 'TV Series',
         geners: anime.genres || [],
         casts: [],
         tags: [],
