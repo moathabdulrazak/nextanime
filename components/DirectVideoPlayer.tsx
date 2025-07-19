@@ -108,12 +108,9 @@ export function DirectVideoPlayer({ streamingLinks, className = '' }: DirectVide
           onError={handlePlayerError}
           onReady={() => console.log('Video player ready')}
           config={{
-            file: {
-              attributes: {
-                crossOrigin: 'anonymous',
-              },
-              forceHLS: selectedSource.type === 'hls',
-            },
+            youtube: {
+              playerVars: { showinfo: 1 }
+            }
           }}
           style={{
             borderRadius: '8px',
