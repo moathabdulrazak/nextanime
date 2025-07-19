@@ -20,22 +20,24 @@ export default function WatchPage() {
 
   useEffect(() => {
     // Get mediaId from URL params
-    const urlParams = new URLSearchParams(window.location.search);
-    const media = urlParams.get('mediaId');
-    if (media) {
-      setMediaId(media);
-    } else {
-      // If no mediaId provided, try to use episodeId as both
-      // For anime, append episode 1 if no episode specified
-      let finalEpisodeId = episodeId;
-      if (episodeId.includes('anime/') && !episodeId.includes('episode')) {
-        finalEpisodeId = `${episodeId}/episode/1`;
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const media = urlParams.get('mediaId');
+      if (media) {
+        setMediaId(media);
+      } else {
+        // If no mediaId provided, try to use episodeId as both
+        // For anime, append episode 1 if no episode specified
+        let finalEpisodeId = episodeId;
+        if (episodeId.includes('anime/') && !episodeId.includes('episode')) {
+          finalEpisodeId = `${episodeId}/episode/1`;
+        }
+        setMediaId(finalEpisodeId);
       }
-      setMediaId(finalEpisodeId);
+      
+      // Set debug info
+      setDebugInfo(`Episode ID: ${episodeId}, Media ID: ${media || episodeId}`);
     }
-    
-    // Set debug info
-    setDebugInfo(`Episode ID: ${episodeId}, Media ID: ${media || episodeId}`);
   }, [episodeId]);
 
   const { data: streamingLinks, isLoading, error } = useQuery({
@@ -78,7 +80,11 @@ export default function WatchPage() {
           
           <div className="space-y-3">
             <button
-              onClick={() => window.location.reload()}
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.location.reload();
+                }
+              }}
               className="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-full transition-colors mr-3"
             >
               Retry

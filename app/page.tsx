@@ -77,10 +77,12 @@ export default function Home() {
     const scrollRef = useRef<HTMLDivElement>(null);
     
     useEffect(() => {
-      const checkMobile = () => setIsMobile(window.innerWidth < 768);
-      checkMobile();
-      window.addEventListener('resize', checkMobile);
-      return () => window.removeEventListener('resize', checkMobile);
+      if (typeof window !== 'undefined') {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+      }
     }, []);
     
     const cardWidth = {
@@ -253,8 +255,8 @@ export default function Home() {
                   key={i}
                   className="absolute w-1 h-1 bg-white/10 rounded-full"
                   initial={{ 
-                    x: Math.random() * window.innerWidth,
-                    y: Math.random() * window.innerHeight,
+                    x: Math.random() * 1920,
+                    y: Math.random() * 1080,
                     opacity: 0
                   }}
                   animate={{

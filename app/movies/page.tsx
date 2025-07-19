@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { MovieCard } from '@/components/MovieCard';
 import { movieAPI } from '@/lib/api';
@@ -10,6 +10,16 @@ import { Film, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function MoviesPage() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    if (typeof window !== 'undefined') {
+      checkMobile();
+      window.addEventListener('resize', checkMobile);
+      return () => window.removeEventListener('resize', checkMobile);
+    }
+  }, []);
 
   const { data: movies, isLoading, error } = useQuery({
     queryKey: ['movies', currentPage],
@@ -108,7 +118,7 @@ export default function MoviesPage() {
 
           <div className="flex items-center gap-1 md:gap-2">
             {/* Show fewer page numbers on mobile */}
-            {Array.from({ length: Math.min(window.innerWidth < 640 ? 3 : 5, totalPages) }, (_, i) => {
+            {Array.from({ length: Math.min(isMobile ? 3 : 5, totalPages) }, (_, i) => {
               const page = Math.max(1, Math.min(currentPage - 1 + i, totalPages - 2 + i));
               return (
                 <button

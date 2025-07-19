@@ -16,13 +16,15 @@ export default function WatchPage() {
 
   useEffect(() => {
     // Get mediaId from URL params
-    const urlParams = new URLSearchParams(window.location.search);
-    const media = urlParams.get('mediaId');
-    if (media) {
-      setMediaId(media);
-    } else {
-      // If no mediaId provided, try to use episodeId as both
-      setMediaId(episodeId);
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const media = urlParams.get('mediaId');
+      if (media) {
+        setMediaId(media);
+      } else {
+        // If no mediaId provided, try to use episodeId as both
+        setMediaId(episodeId);
+      }
     }
   }, [episodeId]);
 
